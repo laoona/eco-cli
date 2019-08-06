@@ -1,6 +1,6 @@
 {
   "name": "eco-cli",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "weapp generator",
   "main": "index.js",
   "scripts": {
@@ -18,18 +18,10 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
-    "etpl": "^3.2.0",
-    "ink": "^2.3.0",
-    "ink-text-input": "^3.2.0",
-    "react": "^16.8.6",
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.5.5"
+    "etpl": "^3.2.0"
   },
   "devDependencies": {},
   "bin": {
-    "eco": "index.js"
+    "weapp": "index.js"
   }
 }
