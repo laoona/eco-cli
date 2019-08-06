@@ -1,0 +1,4 @@
+const opts = {};
+
+Page(opts);
+
