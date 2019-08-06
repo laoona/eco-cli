@@ -15,7 +15,7 @@ const boilerplate = require('../boilerplate');
 module.exports = function (opts) {
   const fileName = opts.name;
   const baseDir = process.cwd();
-  const dir = path.join(baseDir, './components/', fileName);
+  const dir = path.join(baseDir, fileName);
   const pageName = path.basename(dir);
 
   const files = boilerplate.component(pageName, {
