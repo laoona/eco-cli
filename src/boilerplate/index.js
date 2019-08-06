@@ -31,5 +31,25 @@ module.exports = {
     });
 
     return res;
+  },
+  component: function (fileName, data = {}) {
+    const tpl = {
+      'component/component.js': `${fileName}.js`,
+      'component/component.json': `${fileName}.json`,
+      'component/component.wxml': `${fileName}.wxml`,
+      'component/component.wxss': `${fileName}.wxss`,
+    }
+
+    let res = [];
+
+    Object.keys(tpl).forEach(function (tplPath) {
+      const _tplPath = path.join(__dirname, './', tplPath);
+
+      const content = render.render(fs.readFileSync(_tplPath, 'utf-8'), data);
+
+      res.push(new File(tpl[tplPath], content));
+    });
+
+    return res;
   }
 }

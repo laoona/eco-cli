@@ -27,10 +27,18 @@ program
   .command('add <name>')
   .option('-p, --page', '新增一个小程序页面')
   .option('-c, --component', '新增一个小程序组件')
-  .description('初始化一个新项目')
-  .action(function(name, options) {
+  .description('新增一个小程序页面或组件')
+  .action(function(name, options = {}) {
     cmdValue = options;
-    console.log(name, options.page);
+
+    const {page, component} = options;
+
+    if (page) {
+      return require('../command/add_page.js')({name});
+    }
+    if (component) {
+      return require('../command/add_component.js')({name});
+    }
 
     require('../command/add_page.js')({name});
   });
