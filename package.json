@@ -1,6 +1,6 @@
 {
   "name": "eco-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "weapp generator",
   "main": "index.js",
   "scripts": {
@@ -28,8 +28,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.5.5"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "bin": {
     "eco": "index.js"
   }
