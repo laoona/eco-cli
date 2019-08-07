@@ -20,7 +20,7 @@ program
   .description('初始化一个新项目')
   .action(function(cmd) {
     cmdValue = cmd;
-    require('./bak');
+    require('../command/init.js')();
   });
 
 program
