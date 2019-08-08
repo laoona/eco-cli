@@ -9,6 +9,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const promptList = [];
+const init = require('../create/init');
+const templates = require('../templates');
 
 const askProjectName = function (conf = {}, prompts) {
   if (typeof conf.projectName !== 'string') {
@@ -45,10 +47,7 @@ const askProjectName = function (conf = {}, prompts) {
 }
 
 const askTemplate =  function (conf, prompts, list = []) {
-  const choices = [{
-    name: '默认模板',
-    value: 'default'
-  }, ...list.map(item => ({ name: item, value: item }))]
+  const choices = [...list.map(({desc: name, name: value}) => ({ name, value}))]
 
   if (typeof conf.template !== 'string') {
     prompts.push({
@@ -65,18 +64,12 @@ module.exports = function () {
   const config = {};
 
   askProjectName(config, promptList)
-  askTemplate(config, promptList)
+  askTemplate(config, promptList, templates)
 
   inquirer
     .prompt(promptList)
     .then(answers => {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve();
-          console.log(answers);
-        }, 3000)
-      });
-
+      return init(answers);
     }).catch(() => {
       console.log('err');
   });

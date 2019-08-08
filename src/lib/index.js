@@ -7,8 +7,8 @@
  */
 
 
-const {mkdirs, mkdirsSync} = require('./mkdirs.js');
-const log = require('./log.js');
+const {mkdirs, mkdirsSync} = require('./mkdirs');
+const log = require('./log');
 
 exports.mkdirs = mkdirs;
 exports.mkdirsSync = mkdirsSync;

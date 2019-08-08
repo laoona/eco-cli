@@ -20,7 +20,7 @@ program
   .description('初始化一个新项目')
   .action(function(cmd) {
     cmdValue = cmd;
-    require('../command/init.js')();
+    require('../command/init')();
   });
 
 program
@@ -34,13 +34,13 @@ program
     const {page, component} = options;
 
     if (page) {
-      return require('../command/add_page.js')({name});
+      return require('../command/add_page')({name});
     }
     if (component) {
-      return require('../command/add_component.js')({name});
+      return require('../command/add_component')({name});
     }
 
-    require('../command/add_page.js')({name});
+    require('../command/add_page')({name});
   });
 
 program.parse(process.argv);
