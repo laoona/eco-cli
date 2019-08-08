@@ -1,8 +1,8 @@
 [
   {
     "name": "weapp",
-    "url": "https://github.com/laoono/slice.git",
-    "branch": "touch",
+    "url": "https://github.com/laoono/eco.git",
+    "branch": "master",
     "desc": "小程序默认模板"
   }
 ]

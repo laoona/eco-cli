@@ -24,6 +24,14 @@ program
   });
 
 program
+  .command('run')
+  .description('开始运行项目')
+  .action(function(cmd) {
+    cmdValue = cmd;
+    require('../command/run')();
+  });
+
+program
   .command('add <name>')
   .option('-p, --page', '新增一个小程序页面')
   .option('-c, --component', '新增一个小程序组件')
