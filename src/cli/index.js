@@ -7,6 +7,7 @@
  */
 
 const program = require('commander');
+const envType = ['dev', 'test', 'prod'];
 let cmdValue;
 
 program
@@ -29,6 +30,19 @@ program
   .action(function(cmd) {
     cmdValue = cmd;
     require('../command/run')();
+  });
+
+program
+  .command('build')
+  .option('-e, --env <type>', `环境变量: ${JSON.stringify(envType)}`)
+  .description('构建小程序')
+  .action(function(options) {
+    cmdValue = options;
+    const opts = {
+      ...options,
+    };
+
+    require('../command/build')(opts);
   });
 
 program

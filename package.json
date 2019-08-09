@@ -29,7 +29,8 @@
     "gulp-sass": "^4.0.2",
     "gulp-watch": "^5.0.1",
     "inquirer": "^6.5.0",
-    "ora": "^3.4.0"
+    "ora": "^3.4.0",
+    "vm2": "^3.8.3"
   },
   "devDependencies": {},
   "bin": {

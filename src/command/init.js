@@ -9,7 +9,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const promptList = [];
-const init = require('../create/init');
+const init = require('../main/init');
 const templates = require('../templates');
 
 const askProjectName = function (conf = {}, prompts) {

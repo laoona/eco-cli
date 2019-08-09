@@ -6,8 +6,6 @@
  * @description: #
  */
 
-const exec = require('child_process').exec;
-
 module.exports = function () {
   require('../gulpfile')();
 };
