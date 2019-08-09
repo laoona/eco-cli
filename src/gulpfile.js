@@ -17,6 +17,7 @@ const gulpWxss = require('./gulp/gulp_wxss');
 const gulpClone = require('./gulp/gulp_clone');
 const gulpImage = require('./gulp/gulp_image');
 const gulpJson = require('./gulp/gulp_json');
+const gulpWxml = require('./gulp/gulp_wxml');
 
 module.exports = function (env = 'dev', command = 'run') {
   /* 编译JS文件 */
@@ -30,6 +31,9 @@ module.exports = function (env = 'dev', command = 'run') {
 
   /* 编译配置文件 */
   gulp.task('build:json', () => gulpJson());
+
+  /* 编译wxml文件 */
+  gulp.task('build:wxml', () => gulpWxml());
 
 // 复制文件
   gulp.task('clone', () => gulpClone());
@@ -53,6 +57,7 @@ module.exports = function (env = 'dev', command = 'run') {
     watch(['src/**/*.json'], parallel('build:json'));
 
     watch(['config/**/*.js'], parallel('config'));
+    watch(['src/**/*.wxml'], parallel('build:wxml'));
   });
 
   // task列表
