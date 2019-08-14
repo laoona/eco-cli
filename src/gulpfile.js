@@ -62,7 +62,7 @@ module.exports = function (env = 'dev', command = 'run') {
 
   // task列表
   const tasks = [
-    'clean', 'config', 'clone', 'build:wxss',
+    'clean', 'config', 'clone', 'build:wxss', 'build:js',
   ];
 
   if (command === 'run') {
