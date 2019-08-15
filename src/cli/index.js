@@ -35,6 +35,7 @@ program
 program
   .command('build')
   .option('-e, --env <type>', `环境变量: ${JSON.stringify(envType)}`)
+  .option('-t, --tinypng', '使用 tinypng 压缩图片' )
   .description('构建小程序')
   .action(function(options) {
     cmdValue = options;

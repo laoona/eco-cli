@@ -18,8 +18,9 @@ const gulpClone = require('./gulp/gulp_clone');
 const gulpImage = require('./gulp/gulp_image');
 const gulpJson = require('./gulp/gulp_json');
 const gulpWxml = require('./gulp/gulp_wxml');
+const gulpClean = require('./gulp/gulp_clean');
 
-module.exports = function (env = 'dev', command = 'run') {
+module.exports = function (env = 'dev', command = 'run', opts = {}) {
   /* 编译JS文件 */
   gulp.task('build:js', () => gulpJavascript(env));
 
@@ -27,7 +28,7 @@ module.exports = function (env = 'dev', command = 'run') {
   gulp.task('build:wxss', () => gulpWxss());
 
   /* 编译图片文件 */
-  gulp.task('build:image', () => gulpImage());
+  gulp.task('build:image', () => gulpImage(env, opts.tinypng));
 
   /* 编译配置文件 */
   gulp.task('build:json', () => gulpJson());
@@ -48,6 +49,9 @@ module.exports = function (env = 'dev', command = 'run') {
     await del(['./dist/']);
   });
 
+  // 清理样式引用的图片
+  gulp.task('clean:image', () => gulpClean());
+
 // 监测文件变化
   gulp.task('watch', () => {
     log.info('监听中...');
@@ -62,11 +66,15 @@ module.exports = function (env = 'dev', command = 'run') {
 
   // task列表
   const tasks = [
-    'clean', 'config', 'clone', 'build:wxss', 'build:js', 'build:wxml',
+    'clean', 'config', 'clone',  'build:image', 'build:wxss', 'build:js', 'build:wxml',
   ];
 
   if (command === 'run') {
     tasks.push('watch');
+  }
+
+  if (command === 'build') {
+    tasks.push('clean:image');
   }
 
 // 默认任务

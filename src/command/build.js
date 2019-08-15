@@ -9,12 +9,12 @@ const {log} = require('../lib');
 const envType = ['dev', 'test', 'prod'];
 
 module.exports = function (options) {
-  const {env} = options;
+  const {env, tinypng} = options;
 
   if (!envType.includes(env)) {
     log.warn(`输入环境类型错误，目前只支持${JSON.stringify(envType)}`);
     process.exit();
   }
 
-  require('../gulpfile')(env, 'build');
+  require('../gulpfile')(env, 'build', {tinypng});
 };

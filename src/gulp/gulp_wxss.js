@@ -17,12 +17,13 @@ module.exports = function() {
   return gulp.src(['src/**/*.wxss', 'src/**/*.scss'])
     .pipe(cached('#wxss'))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(rename({
+      extname: ".wxss"
+    }))
+    .pipe(gulp.dest('dist'))
     .pipe(base64({
       extensions: [/\?base64$/i],
       maxImageSize: 0
-    }))
-    .pipe(rename({
-      extname: ".wxss"
     }))
     .pipe(debug({title: 'wxss'}))
     .pipe(gulp.dest('dist'));
