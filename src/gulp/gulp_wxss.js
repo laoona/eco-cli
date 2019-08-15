@@ -22,7 +22,8 @@ module.exports = function() {
     }))
     .pipe(gulp.dest('dist'))
     .pipe(base64({
-      extensions: [/\?base64$/i],
+      extensions: ['png', 'jpg', 'jpeg', 'svg', /\?base64$/i],
+      exclude:    [/^http(s):\/\//,],
       maxImageSize: 0
     }))
     .pipe(debug({title: 'wxss'}))
