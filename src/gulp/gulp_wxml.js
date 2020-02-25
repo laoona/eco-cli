@@ -13,6 +13,7 @@ const htmlmin = require('gulp-htmlmin');
 const gulpif = require('gulp-if');
 
 const minConf = {
+  caseSensitive: true,
   collapseWhitespace: true,
   keepClosingSlash: true,
   conservativeCollapse: true,

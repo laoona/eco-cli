@@ -7,7 +7,7 @@
  */
 const gulp = require('gulp');
 const watch = require('gulp-watch');
-const {parallel, series} = gulp;
+const {parallel, series, watch: gulpWatch} = gulp;
 const {log} = require('./lib');
 const del = require('del');
 const run = require('./main/run');
@@ -62,6 +62,16 @@ module.exports = function (env = 'dev', command = 'run', opts = {}) {
 
     watch(['config/**/*.js'], parallel('config'));
     watch(['src/**/*.wxml'], parallel('build:wxml'));
+  });
+
+  // 删除目录 同步到dist
+  const watcher = gulpWatch(['src/**/*']);
+
+  watcher.on('unlinkDir', function(path) {
+    const disPath = path.replace(/^src\//gi, 'dist/');
+
+    del(disPath);
+    log.warn(`已删除：${disPath}`);
   });
 
   // task列表
