@@ -64,16 +64,6 @@ module.exports = function (env = 'dev', command = 'run', opts = {}) {
     watch(['src/**/*.wxml'], parallel('build:wxml'));
   });
 
-  // 删除目录 同步到dist
-  const watcher = gulpWatch(['src/**/*']);
-
-  watcher.on('unlinkDir', function(path) {
-    const disPath = path.replace(/^src\//gi, 'dist/');
-
-    del(disPath);
-    log.warn(`已删除：${disPath}`);
-  });
-
   // task列表
   const tasks = [
     'clean', 'config', 'clone',  'build:image', 'build:wxss', 'build:js', 'build:wxml',
@@ -81,6 +71,16 @@ module.exports = function (env = 'dev', command = 'run', opts = {}) {
 
   if (command === 'run') {
     tasks.push('watch');
+
+    // 删除目录 同步到dist
+    const watcher = gulpWatch(['src/**/*']);
+
+    watcher.on('unlinkDir', function(path) {
+      const disPath = path.replace(/^src\//gi, 'dist/');
+
+      del(disPath);
+      log.warn(`已删除：${disPath}`);
+    });
   }
 
   if (command === 'build') {
