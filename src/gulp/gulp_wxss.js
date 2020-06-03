@@ -12,6 +12,7 @@ const cached = require('gulp-cached');
 const sass = require('gulp-sass');
 const rename = require('gulp-rename');
 const base64 = require('gulp-base64');
+const replace = require('gulp-replace-path');
 
 module.exports = function() {
   return gulp.src(['src/**/*.wxss', 'src/**/*.scss'])
@@ -21,6 +22,8 @@ module.exports = function() {
       extname: ".wxss"
     }))
     .pipe(gulp.dest('dist'))
+    .pipe(replace(/@import\s+url\([\"|\']{1}(.*)[\"|\']{1}\)/gi, '@import \'$1\''))
+    .pipe(replace(/@import\s+url\((.*)\)/gi, '@import \'$1\''))
     .pipe(base64({
       extensions: ['png', 'jpg', 'jpeg', 'svg', /\?base64$/i],
       exclude:    [/^http(s):\/\//,],
