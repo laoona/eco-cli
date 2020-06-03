@@ -15,8 +15,8 @@ const base64 = require('gulp-base64');
 
 module.exports = function() {
   return gulp.src(['src/**/*.wxss', 'src/**/*.scss'])
-    .pipe(cached('#wxss'))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(cached('#wxss'))
     .pipe(rename({
       extname: ".wxss"
     }))

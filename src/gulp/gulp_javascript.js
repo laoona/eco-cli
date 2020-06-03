@@ -38,7 +38,7 @@ const babelConf = {
         },
         // include: [/^transform-.*$/]
       }
-    ]
+    ],
   ],
   plugins: [
     [
@@ -47,18 +47,20 @@ const babelConf = {
         helpers: false,
         absoluteRuntime: false,
       }
-    ]
+    ],
+    ['@babel/plugin-proposal-optional-chaining',],
+    ['@babel/plugin-proposal-nullish-coalescing-operator'],
   ]
 };
 
 module.exports = function(env) {
   return gulp.src(['src/**/*.js'])
-    .pipe(gulpif(env === 'prod', babel(babelConf)))
+    .pipe(gulpif(env === 'prod' || 1, babel(babelConf)))
     .pipe(cached('#javascript'))
     .on('error', function (error) {
       console.log(error);
     })
-    .pipe(gulpif(env === 'prod', replace(new RegExp('@babel/runtime/regenerator', 'g'), function (match, __absolutePath__) {
+    .pipe(gulpif(env === 'prod' || 1, replace(new RegExp('@babel/runtime/regenerator', 'g'), function (match, __absolutePath__) {
       let __path = path.relative(path.dirname(__absolutePath__), process.cwd() + '/src/libs');
       __path = fixedWinPath(__path);
 
