@@ -15,7 +15,7 @@ const path = require('path');
 const uglify = require('gulp-uglify');
 const gulpif = require('gulp-if');
 
-function fixedWinPath (pathName) {
+function fixedWinPath(pathName) {
   pathName = pathName || '';
   pathName = pathName.replace(/\.\\/g, './');
   pathName = pathName.replace(/\.{2}\\/g, '../');
@@ -53,7 +53,14 @@ const babelConf = {
   ]
 };
 
-module.exports = function(env) {
+const uglifyJsConf = {
+  compress: {
+    drop_console: true,
+    drop_debugger: true,
+  }
+};
+
+module.exports = function (env) {
   return gulp.src(['src/**/*.js'])
     .pipe(gulpif(env === 'prod' || 1, babel(babelConf)))
     .pipe(cached('#javascript'))
@@ -66,7 +73,7 @@ module.exports = function(env) {
 
       return path.join(__path + '/runtime.js');
     })))
-    .pipe(gulpif(env === 'prod', uglify()))
+    .pipe(gulpif(env === 'prod', uglify(uglifyJsConf)))
     .pipe(debug({title: 'javascript'}))
     .pipe(gulp.dest('dist'));
 }
