@@ -81,6 +81,14 @@ module.exports = function (env = 'dev', command = 'run', opts = {}) {
       del(disPath);
       log.warn(`已删除：${disPath}`);
     });
+
+    // 删除文件时，同步到dist
+    watcher.on('unlink', function(path) {
+      const disPath = path.replace(/^src\//gi, 'dist/');
+
+      del(disPath);
+      log.warn(`已删除：${disPath}`);
+    });
   }
 
   if (command === 'build') {
