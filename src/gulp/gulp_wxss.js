@@ -22,8 +22,8 @@ module.exports = function() {
       extname: ".wxss"
     }))
     .pipe(gulp.dest('dist'))
-    .pipe(replace(/@import\s+url\([\"|\']{1}(.*)[\"|\']{1}\)/gi, '@import \'$1\''))
-    .pipe(replace(/@import\s+url\((.*)\)/gi, '@import \'$1\''))
+    .pipe(replace(/@import\s+url\([\"|\']{1}(.+)[\"|\']{1}\)/gi, '@import \'$1\''))
+    .pipe(replace(/@import\s+url\(([^;]+)\)/gi, '@import \'$1\''))
     .pipe(base64({
       extensions: ['png', 'jpg', 'jpeg', 'svg', /\?base64$/i],
       exclude:    [/^http(s):\/\//,],
