@@ -1,6 +1,6 @@
 {
   "name": "eco-cli",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "weapp generator",
   "main": "index.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "inquirer": "^6.5.0",
+    "lodash": "^4.17.15",
     "ora": "^3.4.0",
     "vm2": "^3.8.3"
   },
