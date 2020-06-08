@@ -26,7 +26,7 @@ module.exports = function() {
     .pipe(replace(/@import\s+url\(([^;]+)\)/gi, '@import \'$1\''))
     .pipe(base64({
       extensions: ['png', 'jpg', 'jpeg', 'svg', /\?base64$/i],
-      exclude:    [/^http(s):\/\//,],
+      exclude:    [/^https*:\/\//,],
       maxImageSize: 0
     }))
     .pipe(debug({title: 'wxss'}))
