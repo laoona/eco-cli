@@ -42,6 +42,7 @@
     "inquirer": "^6.5.0",
     "lodash": "^4.17.15",
     "ora": "^3.4.0",
+    "through2": "^3.0.1",
     "vm2": "^3.8.3"
   },
   "devDependencies": {},
