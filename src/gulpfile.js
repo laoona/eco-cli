@@ -21,6 +21,8 @@ const gulpWxml = require('./gulp/gulp_wxml');
 const gulpClean = require('./gulp/gulp_clean');
 
 module.exports = function (env = 'dev', command = 'run', opts = {}) {
+  const date = new Date();
+
   /* 编译JS文件 */
   gulp.task('build:js', () => gulpJavascript(env));
 
@@ -50,7 +52,7 @@ module.exports = function (env = 'dev', command = 'run', opts = {}) {
   });
 
   // 清理样式引用的图片
-  gulp.task('clean:image', () => gulpClean());
+  gulp.task('clean:image', () => gulpClean(env, command, date));
 
 // 监测文件变化
   gulp.task('watch', () => {

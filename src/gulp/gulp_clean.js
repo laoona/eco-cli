@@ -14,6 +14,7 @@ const {log} = require('../lib');
 
 const fs = require('fs');
 const pwd = process.cwd();
+const chalk = require('chalk');
 
 /**
  * 删除样式表里经过base64的图片资源
@@ -52,7 +53,14 @@ const delImageByBase64 = () => {
   });
 }
 
-module.exports = function () {
+module.exports = function (env, command, date) {
+
   return gulp.src(['src/**/*.wxss', 'src/**/*.scss'])
     .pipe(delImageByBase64())
+    .on('end', () => {
+      const start = +date;
+      const end = +new Date();
+      // 打印成功耗时信息
+      console.log(`${chalk.green('[构建成功]')} 共计耗时：${(end - start) / 1000}s`);
+    });
 };
