@@ -1,6 +1,6 @@
 {
   "name": "eco-cli",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "weapp generator",
   "main": "index.js",
   "scripts": {
@@ -32,9 +32,9 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^6.0.0",
+    "gulp-less": "^5.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-replace-path": "^0.4.0",
-    "gulp-sass": "^4.0.2",
     "gulp-tinypng-nokey-plus": "^1.0.1",
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",

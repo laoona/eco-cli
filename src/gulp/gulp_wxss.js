@@ -9,14 +9,19 @@
 const gulp = require('gulp');
 const debug = require('gulp-debug');
 const cached = require('gulp-cached');
-const sass = require('gulp-sass');
+const less = require('gulp-less');
 const rename = require('gulp-rename');
 const base64 = require('gulp-base64');
 const replace = require('gulp-replace-path');
 
+function handleError (error) {
+  console.log(error);
+  this.emit('end');
+}
+
 module.exports = function() {
   return gulp.src(['src/**/*.wxss', 'src/**/*.scss'])
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(less({compress: true}).on('error', handleError))
     .pipe(cached('#wxss'))
     .pipe(rename({
       extname: ".wxss"
