@@ -48,7 +48,11 @@ module.exports = function (env = 'dev', command = 'run', opts = {}) {
 
 // 清理目录
   gulp.task('clean', async () => {
-    await del(['./dist/**', '!./dist/project.config.json', '!./dist/sitemap.json']);
+    await del(['./dist/**',
+      '!./dist/project.config.json',
+      '!./dist/project.private.config.json', // 小程序的本机的配置文件（编辑模式等）
+      '!./dist/sitemap.json'
+    ]);
   });
 
   // 清理样式引用的图片
