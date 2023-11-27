@@ -55,8 +55,8 @@ const babelConf = {
 
 const uglifyJsConf = {
   compress: {
-    drop_console: true,
-    drop_debugger: true,
+    drop_console: false,
+    drop_debugger: false,
   }
 };
 
